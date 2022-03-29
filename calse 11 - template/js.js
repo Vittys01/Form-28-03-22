@@ -33,18 +33,17 @@ inputNombre.addEventListener('blur', function () {
 
 });
 
-
-// formulario.addEventListener('change', function() {
-    // console.log("cambio en el form");
+formulario.addEventListener('change', function() {
+    console.log("cambio en el form");
     
-    // if(validarNombre(datosUsuario.nombre)){
-        // console.log("todo OKKKK");
-        // botonSubmit.removeAttribute('disabled');
-    // }else{
-        // console.log("NOOOOOOOOO")
+    if(validarNombre(datosUsuario.nombre)){
+        console.log("todo OKKKK");
+        botonSubmit.removeAttribute('disabled');
+    }else{
+        console.log("NOOOOOOOOO")
         
-    // }
-// })
+    }
+})
 
 formulario.addEventListener('submit', function (event) {
     // frenamos el envío por defecto
@@ -106,9 +105,60 @@ function validarNombre(nombre) {
 
     return resultado;
 }
+var cont = 0; 
+checkBoxes.forEach(function(box){
+    box.addEventListener("change",()=>{
+        if(box.checked){
+            cont++;
+        }
+        else{
+            cont--;
+        }
+        if (cont > 4) {
+            mensajeCheckBox.classList.remove('oculto');
+        }else{
+            mensajeCheckBox.classList.add('oculto');
+        }
+        
+        if(box.id == "hobbiesCocina" && box.checked){
+            document.getElementById('hobbiesVideoJuegos').disabled = true ;
+        }else{
+            document.getElementById('hobbiesVideoJuegos').disabled = false ;
+        }
+        if(box.id == "hobbiesVideoJuegos" && box.checked){
+            document.getElementById('hobbiesCocina').disabled = true ;
+        }else{
+            document.getElementById('hobbiesCocina').disabled = false ;
+        }
+        if(box.id == "hobbiesGuitarra" && box.checked){
+            document.getElementById('hobbiesLectura').disabled = true ;
+        }else{
+            document.getElementById('hobbiesLectura').disabled = false ;
+        }
+        if(box.id == "hobbiesLectura" && box.checked){
+            document.getElementById('hobbiesGuitarra').disabled = true ;
+        }else{
+            document.getElementById('hobbiesGuitarra').disabled = false ;
+        }
+        if(box.id == "hobbiesNetflix" && box.checked){
+            document.getElementById('hobbiesTejer').disabled = true ;
+        }else{
+            document.getElementById('hobbiesTejer').disabled = false ;
+        }
+        if(box.id == "hobbiesTejer" && box.checked){
+            document.getElementById('hobbiesNetflix').disabled = true ;
+        }else{
+            document.getElementById('hobbiesNetflix').disabled = false ;
+        }
+    });
+});
 
-validarCheckBox =  () => {
-    if(listadoHobbies.length > 4){
-        let mesajeerrorCheck = document.querySelector("#mensajeCheckBox");
-    }
-}
+radioButons.forEach(function(radiobutton){
+    radiobutton.addEventListener('change', function () {
+        if (radiobutton.checked && radiobutton.id == "nacionalidadArgentina") {
+            mensajeRadio.classList.remove('oculto');
+        }else{
+            mensajeRadio.classList.add('oculto');
+        }
+    })
+});
