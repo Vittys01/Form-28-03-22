@@ -34,17 +34,17 @@ inputNombre.addEventListener('blur', function () {
 });
 
 
-formulario.addEventListener('change', function() {
-    console.log("cambio en el form");
+// formulario.addEventListener('change', function() {
+    // console.log("cambio en el form");
     
-    if(validarNombre(datosUsuario.nombre)){
-        console.log("todo OKKKK");
-        botonSubmit.removeAttribute('disabled');
-    }else{
-        console.log("NOOOOOOOOO")
+    // if(validarNombre(datosUsuario.nombre)){
+        // console.log("todo OKKKK");
+        // botonSubmit.removeAttribute('disabled');
+    // }else{
+        // console.log("NOOOOOOOOO")
         
-    }
-})
+    // }
+// })
 
 formulario.addEventListener('submit', function (event) {
     // frenamos el envío por defecto
@@ -65,7 +65,6 @@ formulario.addEventListener('submit', function (event) {
             listadoHobbies.push(hobbie.id);
         }
     });
-    
     //normalizar
     console.log(normalizar(inputNombre.value, inputContrasenia.value, inputTelefono.value, listadoHobbies, nacionalidad));
 
@@ -106,4 +105,10 @@ function validarNombre(nombre) {
     });
 
     return resultado;
+}
+
+validarCheckBox =  () => {
+    if(listadoHobbies.length > 4){
+        let mesajeerrorCheck = document.querySelector("#mensajeCheckBox");
+    }
 }
